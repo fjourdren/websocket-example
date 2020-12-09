@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <title>Conversational Agent</title>
+
+    <style>
+      body {
+        text-align: center;
+        background: url("background.png") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+
+      .content {
+        width: 50%;
+        margin: auto;
+      }
+
+      #output {
+        text-align: left;
+        border: 1px dashed black;
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+
+      .examples {
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h1>Make me a joke</h1>
+      <p id="output"></p>
+      <input id="input" type="text"><button onclick="send()">Send</button>
+      <div class="examples">
+        <strong>Rivescript input example:</strong>
+        <ul>
+          <li>hello</li>
+          <li>hi</li>
+          <li>my name is *</li>
+          <li>thank you</li>
+          <li>can i get a random sentance</li>
+          <li>can i get a random</li>
+          <li>random</li>
+          <li>rand</li>
+          <li>joke</li>
+          <li>can you tell me a joke</li>
+          <li>can i get a joke</li>
+        </ul>
+      </p>
+    </div>
+  </body>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+  <script>
+    // init connection
+    let socket = io()
+
+    // send a message
+    function send() {
+      let msg = document.getElementById("input").value
+      document.getElementById("output").innerHTML += "<br><strong>Client</strong>: " + msg
+      socket.emit("user-message", msg)
+    }
+
+    // manage receive
+    socket.on('server-message', (data) => {
+      // show message on the page
+      document.getElementById("output").innerHTML += "<br><strong>Server</strong>: " + data
+    });
+  </script>
+</html>

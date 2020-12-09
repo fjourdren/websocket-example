@@ -1,0 +1,6 @@
+{
+  "name": "Conversational agent",
+  "description": "Conversational agent to put santa's coordinates",
+  "repository": "https://github.com/fjourdren/node-socket.io",
+  "keywords": ["node", "websocket", "socket.io", "RiveScript"]
+}
