@@ -1,0 +1,6 @@
+{
+  "name": "Spot santa !",
+  "description": "Put santa's coordinates on a map",
+  "repository": "https://github.com/fjourdren/node-socket.io",
+  "keywords": ["node", "websocket", "socket.io"]
+}
